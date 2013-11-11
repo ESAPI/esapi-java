@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.owasp.esapi</groupId>
+    <artifactId>esapi</artifactId>
+    <version>3.0-SNAPSHOT</version>
+
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <licenses>
+        <license>
+            <name>BSD</name>
+            <url>http://www.opensource.org/licenses/bsd-license.php</url>
+            <comments>Code License - New BSD License</comments>
+        </license>
+        <license>
+            <name>Creative Commons 3.0 BY-SA</name>
+            <url>http://creativecommons.org/licenses/by-sa/3.0/</url>
+            <comments>Content License - Create Commons 3.0 BY-SA</comments>
+        </license>
+    </licenses>
+
+    <name>ESAPI</name>
+    <url>http://www.esapi.org/</url>
+    <description>The Enterprise Security API (ESAPI) project is an OWASP project
+        to create simple strong security controls for every web platform.
+        Security controls are not simple to build. You can read about the
+        hundreds of pitfalls for unwary developers on the OWASP web site. By
+        providing developers with a set of strong controls, we aim to
+        eliminate some of the complexity of creating secure web applications.
+        This can result in significant cost savings across the SDLC.
+    </description>
+
+    <organization>
+        <name>The Open Web Application Security Project (OWASP)</name>
+        <url>http://www.owasp.org/index.php</url>
+    </organization>
+
+    <mailingLists>
+        <mailingList>
+            <name>ESAPI-Users</name>
+            <subscribe>https://lists.owasp.org/mailman/listinfo/esapi-user/</subscribe>
+            <unsubscribe>https://lists.owasp.org/mailman/listinfo/esapi-user/</unsubscribe>
+            <post>mailto:esapi-users@lists.owasp.org</post>
+            <archive>https://lists.owasp.org/pipermail/esapi-users/</archive>
+            <!--This is the OWASP ESAPI mailing list for ESAPI users, regardless of programming language. For example, ESAPI users with questions about ESAPI for Java or ESAPI for PHP would both post here.-->
+        </mailingList>
+        <mailingList>
+            <name>ESAPI-Developers</name>
+            <subscribe>https://lists.owasp.org/mailman/listinfo/esapi-dev/</subscribe>
+            <unsubscribe>https://lists.owasp.org/mailman/listinfo/esapi-dev/</unsubscribe>
+            <post>mailto:esapi-dev@lists.owasp.org</post>
+            <archive>https://lists.owasp.org/pipermail/esapi-dev/</archive>
+            <!--This is the OWASP ESAPI mailing list for ESAPI for Java developers. While the list is not closed, the topics of discussion are likely to be less relevant to those only using ESAPI. Note that this is the list for ESAPI for Java. Most other language implementations, such ESAPI for PHP, have their own mailing lists.-->
+        </mailingList>
+        <mailingList>
+            <name>OWASP-ESAPI (Inactive! Archive only!)</name>
+            <archive>https://lists.owasp.org/pipermail/owasp-esapi/</archive>
+            <!--The name of the obsolete mailing list that previously was a combination of an ESAPI users lists and ESAP development list. While obsolete, it is still sometimes useful for searching through old historical posts. NOTE: NEW POSTS SHOULD NO LONGER BE MADE TO THIS LIST!-->
+        </mailingList>
+    </mailingLists>
+
+    <scm>
+        <connection>scm:git:https://github.com/ESAPI/esapi-java</connection>
+        <developerConnection>scm:git:https://github.com/ESAPI/esapi-java</developerConnection>
+        <url>https://github.com/ESAPI/esapi-java</url>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/ESAPI/esapi-java/issues</url>
+    </issueManagement>
+
+    <developers>
+        <developer>
+            <name>Chris Schmidt</name>
+            <organization>Contrast Security</organization>
+            <roles>
+                <role>Project Leader</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Kevin W. Wall</name>
+            <organization>Wells Fargo</organization>
+            <roles>
+                <role>Project Leader</role>
+                <role>Crypto Guy</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>Jeff Williams</name>
+            <organization>Aspect Security</organization>
+            <roles>
+                <role>Project Advisor</role>
+                <role>Project Inventor</role>
+                <role>Prior Project Leader</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Dave Wichers</name>
+            <organization>Aspect Security</organization>
+            <roles>
+                <role>Documentation and Examples</role>
+                <role>Minor Code Contributions</role>
+                <role>Project Guidance</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Jim Manico</name>
+            <roles>
+                <role>Prior Project Leader</role>
+            </roles>
+        </contributor>
+    </contributors>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+
+
+</project>
