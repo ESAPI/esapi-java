@@ -86,6 +86,7 @@
             <organization>Contrast Security</organization>
             <roles>
                 <role>Project Leader</role>
+                <role>Committer</role>
             </roles>
         </developer>
         <developer>
@@ -94,6 +95,7 @@
             <roles>
                 <role>Project Leader</role>
                 <role>Crypto Guy</role>
+                <role>Committer</role>
             </roles>
         </developer>
     </developers>
@@ -129,6 +131,31 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.8.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 </project>
