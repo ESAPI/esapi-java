@@ -1,84 +1,11 @@
 package org.owasp.esapi.core.validation;
 
 /**
- * The Validator interface defines a set of methods for canonicalizing and
- * validating untrusted input. In ESAPI 3.0 Validators can be used to validate
- * simple or complex data-types depending on the implementation.
+ * The Validator interface defines a set of methods for canonicalizing and validating untrusted input. Validators can be
+ * used to validate simple or complex data-types depending on the implementation.
  * <p/>
- * An example using the new ESAPI 3.0 annotations (JSR-303 Compliant) could
- * validate a user login form using the following code (Implementation Specific):
- * <pre>
- *     {@literal@}Validate
- *     public class UserLoginForm {
- *        {@literal@}LimitedCharSet(Chars.ALPHANUMONLY)
- *        {@literal@}Length(min=3, max=55)
- *        private String username;
- *
- *        {@literal@}Password(requiredChars={Chars.UPPER, Chars.LOWER, Chars.NUMBER, Chars.SPECIAL}, minLength=8)
- *        private String password;
- *
- *        // ....
- *     }
- *
- *     public class UserLoginController {
- *         private static final SecurityLogger SEC = SecurityLogger.get(UserLoginController.class);
- *
- *         public ModelAndView handleRequest(UserLoginForm form, HttpServletRequest request) {
- *            Model model = new Model(request);
- *
- *            try {
- *               ValidatorFactory.create(form).validate();
- *            } catch (ValidationException e) {
- *               model.setErrors(e.getErrorsAsMap());
- *               SEC.audit("Validation Failed", e);
- *            }
- *
- *            return new ModelAndView(model, "login");
- *         }
- *     }
- * </pre>
- * <p/>
- * Full JSR-303 (Java Bean Validation) compliance is available using the ESAPI 3.0 Validators and are compatible using
- * the reference Hibernate Validator.
- * <pre>
- *     public class UserLoginForm {
- *        {@literal@}LimitedCharSet(Chars.ALPHANUMONLY)
- *        {@literal@}Length(min=3, max=55)
- *        private String username;
- *
- *        {@literal@}Password(requiredChars={Chars.UPPER, Chars.LOWER, Chars.NUMBER, Chars.SPECIAL}, minLength=8)
- *        private String password;
- *
- *        // ....
- *     }
- *
- *     {@literal@}Controller
- *     public class UserLoginController {
- *         private static final SecurityLogger SEC = SecurityLogger.get(UserLoginController.class);
- *
- *         {@literal@}RequestMapping("/login", method=RequestMethod.POST)
- *         public ModelAndView handleRequest({@literal@}Valid UserLoginForm form, HttpServletRequest request) {
- *            // In Spring 3, using the {@literal@}Valid Annotation will automatically invoke the global validator
- *            // from Hibernate Validator to validate the form and set validation errors on the BindingResult
- *            // ...
- *         }
- *     }
- * </pre>
- * <p/>
- * Additionally, complex inline validations are now possible using the ESAPI 3.0 Validators.
- * <pre>
- *     ValidatorFactory.create("Email Address", {
- *         new AndValidationRule({
- *             new ValidEmailFormat(),
- *             new ValidDomain(ValidDomain.Type.EMAIL),
- *             new ValidMXRecord()
- *         })
- *     }).validate(email);
- * </pre>
- * <P/>
- * Implementations must adopt a "whitelist" approach to validation where a
- * specific pattern or character set is matched. "Blacklist" approaches that
- * attempt to identify the invalid or disallowed characters are much more likely
+ * Implementations must adopt a "whitelist" approach to validation where a specific pattern or character set is
+ * matched. "Blacklist" approaches that attempt to identify the invalid or disallowed characters are much more likely
  * to allow a bypass with encoding or other tricks.
  *
  * @author Jeff Williams (jeff.williams .at. aspectsecurity.com) <a href="http://www.aspectsecurity.com">Aspect Security</a>
@@ -86,7 +13,31 @@ package org.owasp.esapi.core.validation;
  * @since June 1, 2007
  * @version 3.0
  */
+@SuppressWarnings("UnusedDeclaration")
 public interface Validator {
-
+    /**
+     * Validates the given input and throws a {@link ValidationException} if validation fails.
+     *
+     * @param input The input to be validated.
+     * @param <T> Data-Type inferred by the input argument.
+     * @throws ValidationException When validation fails.
+     */
     <T> void validate(T input) throws ValidationException;
+
+    /**
+     * Validates the given input and adds failures to the supplied {@link ValidationErrors} object.
+     *
+     * @param input The input to be validated
+     * @param errors The {@link ValidationErrors} instance to append errors to.
+     * @param <T> Data-Type inferred by the input argument.
+     */
+    <T> void validate(T input, ValidationErrors errors);
+
+    /**
+     * Returns whether the supplied object is supported by this Validator instance.
+     *
+     * @param input The object that is to be validated.
+     * @return True if this validator supports the supplied data, false otherwise.
+     */
+    boolean supports(Object input);
 }
