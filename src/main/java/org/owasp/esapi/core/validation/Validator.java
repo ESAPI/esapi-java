@@ -40,4 +40,17 @@ public interface Validator {
      * @return True if this validator supports the supplied data, false otherwise.
      */
     boolean supports(Object input);
+
+    /**
+     * Canonicalizes the given input to it's simplest form. Implementors should ensure that canonicalize throws
+     * a {@link ValidationException} if the input contains multiple or mixed encodings in most cases, special cases
+     * may allow these specific situations.
+     *
+     * Validation should invoke this method prior to validating data.
+     *
+     * @param input The input to be canonicalized
+     * @param <T> Data-Type inferred by the input argument
+     * @return The supplied input reduced to it's simplest form.
+     */
+    <T> T canonicalize(T input) throws ValidationException;
 }
