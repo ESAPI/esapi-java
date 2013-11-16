@@ -16,7 +16,7 @@ package org.owasp.esapi.core.accesscontrol;
  *
  * <pre>
  * try {
- *     ESAPI.accessController().assertAuthorized("businessFunction", runtimeData);
+ *     ESAPI.accessController().assertAuthorized(new ManagedFunction("adminFunction"), runtimeData);
  *     // execute BUSINESS_FUNCTION
  * } catch (AccessControlException ace) {
  * ... attack in progress
@@ -30,12 +30,22 @@ package org.owasp.esapi.core.accesscontrol;
  * repeated in both the business logic and data layers.
  *
  * <pre>
- * &lt;% if ( ESAPI.accessController().isAuthorized( "businessFunction", runtimeData ) ) { %&gt;
+ * &lt;% if ( ESAPI.accessController().isAuthorized(new ManagedFunction("adminFunction"), runtimeData ) ) { %&gt;
  * &lt;a href=&quot;/doAdminFunction&quot;&gt;ADMIN&lt;/a&gt;
  * &lt;% } else { %&gt;
  * &lt;a href=&quot;/doNormalFunction&quot;&gt;NORMAL&lt;/a&gt;
  * &lt;% } %&gt;
  * </pre>
+ * <p/>
+ * You can also perform access control checks directly on data resources if implemented.
+ * <pre>
+ * %&lt; if ( accessController.isAuthorized(userRecord, new ManagedResourceContext( Permissions.EDIT ) ) ) { %&gt;
+ * &lt;a href=&quot;/editUserRecord?userRecord=%&lt;= userRecord.getResourceIdentifier() %&gt;&quot;&gt;Edit&lt;/a&gt;
+ * %&lt; } %&gt;
+ * </pre>
+ * <i>Note: The above example assumes that the resource identifier is a non-direct access to the resource in question.
+ * For more information on Direct Object References see <a href="https://www.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References">A4 - Insecure Direct Object References</a>
+ * from the OWASP Top-Ten</i>
  *
  * @author Mike H. Fauzy (mike.fauzy@aspectsecurity.com) ESAPI v1.6-
  * @author Jeff Williams (jeff.williams@aspectsecurity.com) ESAPI v0-1.5
@@ -51,11 +61,13 @@ public interface AccessController {
      * Typically, assertAuthorized should be used to enforce permissions on the
      * server.
      *
-     * @param key
-     * @param runtimeParameter
+     * @param resource The resource that is being accessed.
+     * @param context The runtime context of the request
+     * @param <T> Implementation type of {@link ManagedResource}
+     * @param <R> Implementation type of {@link AccessControlContext}
      * @return
      */
-    public boolean isAuthorized(Object key, Object runtimeParameter);
+    public <T extends ManagedResource,R extends AccessControlContext> boolean isAuthorized(T resource, R context);
 
     /**
      * Developers should call {@code assertAuthorized} to enforce privileged access to
@@ -64,9 +76,12 @@ public interface AccessController {
      * be integrated into the application framework so that it is called
      * automatically.
      *
-     * @param key
-     * @param runtimeParameter
+     * @param resource The resource that is being accessed
+     * @param context The runtime context of the request
+     * @param <T> Implementation type of {@link ManagedResource}
+     * @param <R> Implementation type of {@link AccessControlContext}
+     * @throws AccessControlException if access is denied
      */
-    public void assertAuthorized(Object key, Object runtimeParameter) throws AccessControlException;
+    public <T extends ManagedResource,R extends AccessControlContext> void assertAuthorized(T resource, R context) throws AccessControlException;
 
 }
