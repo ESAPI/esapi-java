@@ -15,8 +15,6 @@
  */
 package org.owasp.esapi.core;
 
-import org.owasp.esapi.core.logging.Logger;
-
 /**
  * EnterpriseSecurityException is the base class for all security related exceptions. You should pass in the root cause
  * exception where possible. Constructors for classes extending EnterpriseSecurityException should be sure to call the
