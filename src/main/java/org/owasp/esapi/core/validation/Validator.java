@@ -1,5 +1,7 @@
 package org.owasp.esapi.core.validation;
 
+import org.owasp.esapi.core.SecurityComponent;
+
 /**
  * The Validator interface defines a set of methods for validating untrusted input. Validators can be
  * used to validate simple or complex data-types depending on the implementation.
@@ -14,7 +16,7 @@ package org.owasp.esapi.core.validation;
  * @version 3.0
  */
 @SuppressWarnings("UnusedDeclaration")
-public interface Validator {
+public interface Validator extends SecurityComponent {
     /**
      * Validates the given input and throws a {@link ValidationException} if validation fails.
      *

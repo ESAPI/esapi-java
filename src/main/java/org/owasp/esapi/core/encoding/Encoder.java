@@ -1,5 +1,6 @@
 package org.owasp.esapi.core.encoding;
 
+import org.owasp.esapi.core.SecurityComponent;
 import org.owasp.esapi.core.validation.ValidationException;
 
 /**
@@ -9,7 +10,7 @@ import org.owasp.esapi.core.validation.ValidationException;
  *
  * @author Chris Schmidt (chris.schmidt@owasp.org) http://www.ContrastSecurity.com
  */
-public interface Encoder {
+public interface Encoder extends SecurityComponent {
 
 
     /**

@@ -1,5 +1,6 @@
 package org.owasp.esapi.core.logging;
 
+import org.owasp.esapi.core.SecurityComponent;
 import org.owasp.esapi.core.event.SecurityEvent;
 
 /**
@@ -14,7 +15,7 @@ import org.owasp.esapi.core.event.SecurityEvent;
  * logging event in addition to the event description which can be logged allowing filtering based off of Security Event
  * when parsing or reading Security logs.
  */
-public interface SecurityLogger {
+public interface SecurityLogger extends SecurityComponent {
     <T extends SecurityEvent> void audit(T event, String message, Object... parms);
     <T extends SecurityEvent> void audit(T event, Throwable t, String message, Object... parms);
 

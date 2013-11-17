@@ -1,5 +1,7 @@
 package org.owasp.esapi.core.accesscontrol;
 
+import org.owasp.esapi.core.SecurityComponent;
+
 /**
  * The AccessController interface defines a set of methods that can be used in a wide variety of applications to
  * enforce access control. In most applications, access control must be performed in multiple different locations across
@@ -51,7 +53,7 @@ package org.owasp.esapi.core.accesscontrol;
  * @author Jeff Williams (jeff.williams@aspectsecurity.com) ESAPI v0-1.5
  * @author Chris Schmidt (chris.schmidt@contrastsecurity.com) ESAPI v3.0
  */
-public interface AccessController {
+public interface AccessController extends SecurityComponent {
     /**
      * Developers should call isAuthorized to control execution flow. For
      * example, if you want to decide whether to display a UI widget in the
