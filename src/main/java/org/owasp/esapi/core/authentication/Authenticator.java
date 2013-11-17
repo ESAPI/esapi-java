@@ -2,6 +2,8 @@ package org.owasp.esapi.core.authentication;
 
 import org.owasp.esapi.core.SecurityComponent;
 
+import java.security.Principal;
+
 /**
  * The Authenticator interface defines a set of methods for generating and
  * handling account credentials and session identifiers. The goal of this
@@ -16,5 +18,5 @@ import org.owasp.esapi.core.SecurityComponent;
  * @since June 1, 2007
  */
 public interface Authenticator extends SecurityComponent {
-
+    <Auth extends Authentication, Cred extends Credential> Auth authenticate(Principal principal, Cred credential);
 }
