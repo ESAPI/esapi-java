@@ -29,6 +29,7 @@ package org.owasp.esapi.core;
  * <P>
  * @author Jeff Williams (jeff.williams@aspectsecurity.com)
  */
+@SuppressWarnings("UnusedDeclaration")
 public class EnterpriseSecurityException extends Exception {
 
     protected static final long serialVersionUID = 1L;

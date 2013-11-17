@@ -1,5 +1,6 @@
 package org.owasp.esapi.core.encoding;
 
+@SuppressWarnings("UnusedDeclaration")
 public class UnencodableCharacterException extends EncodingException {
     /**
      * Creates a new instance of EnterpriseSecurityException. This exception is automatically logged, so that simply by

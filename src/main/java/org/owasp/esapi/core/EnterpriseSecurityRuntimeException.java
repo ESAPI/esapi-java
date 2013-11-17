@@ -1,5 +1,6 @@
 package org.owasp.esapi.core;
 
+@SuppressWarnings("UnusedDeclaration")
 public class EnterpriseSecurityRuntimeException extends RuntimeException {
 
     protected static final long serialVersionUID = 1L;

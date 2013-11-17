@@ -5,6 +5,7 @@ import org.owasp.esapi.core.EnterpriseSecurityException;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("UnusedDeclaration")
 public class ValidationException extends EnterpriseSecurityException {
     private List<ValidationError> errors;
 

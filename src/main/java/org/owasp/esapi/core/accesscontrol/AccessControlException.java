@@ -4,6 +4,7 @@ import org.owasp.esapi.core.EnterpriseSecurityException;
 
 import java.io.Serializable;
 
+@SuppressWarnings("UnusedDeclaration")
 public class AccessControlException extends EnterpriseSecurityException {
     private Serializable resourceReference;
 

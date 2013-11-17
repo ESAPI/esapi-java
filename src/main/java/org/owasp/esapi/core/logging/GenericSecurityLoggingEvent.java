@@ -15,6 +15,7 @@ import org.owasp.esapi.core.event.SecurityEvent;
  *
  * @author Chris Schmidt (chris.schmidt@owasp.org) http://www.ContrastSecurity.com
  */
+@SuppressWarnings("UnusedDeclaration")
 public class GenericSecurityLoggingEvent implements SecurityEvent {
 
     private static final String LBL_PASS = "PASS";
