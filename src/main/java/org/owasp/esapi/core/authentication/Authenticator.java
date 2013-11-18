@@ -18,5 +18,5 @@ import java.security.Principal;
  * @since June 1, 2007
  */
 public interface Authenticator extends SecurityComponent {
-    <Auth extends Authentication, Cred extends Credential> Auth authenticate(Principal principal, Cred credential);
+    <Auth extends Authentication> Auth authenticate(Auth authentication) throws AuthenticationException;
 }
