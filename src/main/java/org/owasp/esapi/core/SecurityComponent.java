@@ -1,7 +1,5 @@
 package org.owasp.esapi.core;
 
-import java.util.UUID;
-
 /**
  * This is the very basic interface that all Security Control implementations should implement. It is expected that each
  * control/component will have a UUID associated with it so that locater services can locate the implementations based on
@@ -14,5 +12,5 @@ public interface SecurityComponent {
      * Returns the Unique Identifier for this component/control instance.
      * @return Unique Identifier for this component/control instance
      */
-    UUID getComponentID();
+    Object getComponentID();
 }
