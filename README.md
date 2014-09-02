@@ -1,7 +1,7 @@
 OWASP Enterprise Security API for Java
 ==========
 
-![ESAPI Logo](static/ESAPI Logo.png "ESAPI")
+![ESAPI Logo](static/ESAPI Logo.png "ESAPI" =250px)
 
 This is the future home of ESAPI 3.0!
 
