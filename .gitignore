@@ -4,3 +4,31 @@
 *.jar
 *.war
 *.ear
+
+# Intellij
+.idea/
+*.iml
+*.iws
+*.eml
+out/
+
+# Eclipse
+*.pydevproject
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.classpath
+.project
+RemoteSystemsTempFiles/
+.externalToolBuilders/
+*.launch
+.cproject
+.buildpath
+*.userlibraries
