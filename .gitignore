@@ -1,4 +1,6 @@
+# Java Files
 *.class
+target/
 
 # Package Files #
 *.jar
