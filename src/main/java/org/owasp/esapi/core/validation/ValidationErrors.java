@@ -1,12 +1,9 @@
 package org.owasp.esapi.core.validation;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-@SuppressWarnings("UnusedDeclaration")
 public class ValidationErrors implements Serializable {
     private static final long serialVersionUID = 20131112L;
 
@@ -31,12 +28,23 @@ public class ValidationErrors implements Serializable {
         if (errorsForContext == null) {
             return null;
         }
-
-        return errorsForContext.pop();
+        try {
+            return errorsForContext.pop();
+        } catch (EmptyStackException ese) {
+            return null;
+        }
     }
 
     public List<ValidationError> getErrors(String context) {
-        return errors.get(context);
+        List<ValidationError> errorListToReturn = new ArrayList<ValidationError>();
+
+        List<ValidationError> errorListForContext = errors.get(context);
+
+        if(null != errorListForContext) {
+            errorListToReturn.addAll(errorListForContext);
+        }
+
+        return Collections.unmodifiableList(errorListToReturn);
     }
 
     public void clear() {
